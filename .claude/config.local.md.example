@@ -31,11 +31,9 @@ Copy this file to `config.local.md` and fill in your values.
 | Jellyfin | 172.20.0.4 |
 | Pi-hole | 172.20.0.5 |
 | WireGuard | 172.20.0.6 |
-| Homarr | 172.20.0.7 |
 | Jellyseerr | 172.20.0.8 |
 | Bazarr | 172.20.0.9 |
 | FlareSolverr | 172.20.0.10 |
-| Notifiarr | 172.20.0.11 |
 | Cloudflared | 172.20.0.12 |
 | Uptime Kuma | 172.20.0.13 |
 

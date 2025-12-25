@@ -15,7 +15,7 @@ Complete setup guide for the media automation stack. Works on any Docker host wi
 - [Backup](#backup)
 - [Optional Utilities](#optional-utilities)
 
-**See also:** [Quick Reference](REFERENCE.md) · [Updating the Stack](UPDATING.md) · [Home Assistant Integration](HOME-ASSISTANT.md)
+**See also:** [Quick Reference](REFERENCE.md) · [Upgrading](UPGRADING.md) · [Home Assistant Integration](HOME-ASSISTANT.md)
 
 ---
 
@@ -772,7 +772,7 @@ Now:
 2. **Deploy utilities** (optional): See below
 3. **Bookmark:** [Quick Reference](REFERENCE.md) for URLs, commands, and network info
 
-**Other docs:** [Updating the Stack](UPDATING.md) · [Home Assistant Integration](HOME-ASSISTANT.md)
+**Other docs:** [Upgrading](UPGRADING.md) · [Home Assistant Integration](HOME-ASSISTANT.md)
 
 Issues? [Report on GitHub](https://github.com/Pharkie/arr-stack-ugreennas/issues).
 

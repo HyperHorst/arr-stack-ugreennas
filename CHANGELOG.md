@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [1.2] - 2025-12-17
 
 ### Documentation
-- **Restructured docs**: Split into focused files (SETUP.md, REFERENCE.md, UPDATING.md, HOME-ASSISTANT.md)
+- **Restructured docs**: Split into focused files (SETUP.md, REFERENCE.md, UPGRADING.md, HOME-ASSISTANT.md)
 - **Setup screenshots**: Step-by-step Surfshark WireGuard and Cloudflare Tunnel setup with images
 - **Home Assistant integration**: Notification setup guide for download events
 - **VPN provider agnostic**: Documentation now generic; supports 30+ Gluetun providers (was Surfshark-specific)

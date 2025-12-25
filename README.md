@@ -26,7 +26,7 @@ This project provides configuration files for **legal, open-source software** de
 |-----|---------|
 | [Setup Guide](docs/SETUP.md) | Step-by-step deployment |
 | [Quick Reference](docs/REFERENCE.md) | URLs, commands, IPs |
-| [Updating](docs/UPDATING.md) | Pull updates, redeploy |
+| [Upgrading](docs/UPGRADING.md) | Pull updates, redeploy |
 | [Backup & Restore](docs/BACKUP.md) | Backup configs, restore |
 | [Home Assistant](docs/HOME-ASSISTANT.md) | Notifications integration |
 | [Legal](docs/LEGAL.md) | Intended use, disclaimer |
