@@ -30,7 +30,7 @@ Port-free access from any device on your LAN:
 | `http://uptime.lan` | Uptime Kuma |
 | `http://duc.lan` | duc (disk usage) |
 
-> **Setup required:** See [Setup guide section 5.11](SETUP.md#511-local-dns-lan-domains--optional) for router DHCP + Pi-hole DNS configuration.
+> **Setup required:** See [Local DNS section](SETUP.md#local-dns-lan-domains--optional) in Setup guide.
 
 ## External Access (via Cloudflare Tunnel)
 
@@ -60,11 +60,16 @@ All other services are **LAN-only** (not exposed to internet).
 | FlareSolverr | 172.20.0.10 | 8191 | Cloudflare bypass |
 | ↳ SABnzbd | (via Gluetun) | 8082 | Usenet downloads (VPN) |
 
-**Optional** (utilities.yml / cloudflared.yml):
+**+ remote access** (cloudflared.yml):
 
 | Service | IP | Port | Notes |
 |---------|-----|------|-------|
 | Cloudflared | 172.20.0.12 | — | Tunnel (no ports exposed) |
+
+**Optional** (utilities.yml):
+
+| Service | IP | Port | Notes |
+|---------|-----|------|-------|
 | Uptime Kuma | 172.20.0.13 | 3001 | Monitoring |
 | duc | 172.20.0.14 | 8838 | Disk usage |
 
