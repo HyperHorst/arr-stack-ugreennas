@@ -122,8 +122,8 @@ services:
       gluetun:
         condition: service_healthy
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - TZ=${TZ:-Europe/London}
       - WEBUI_PORT=8085
       - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
@@ -153,8 +153,8 @@ services:
       gluetun:
         condition: service_healthy
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - TZ=${TZ:-Europe/London}
     volumes:
       - sabnzbd-config:/config
@@ -182,8 +182,8 @@ services:
       gluetun:
         condition: service_healthy
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - TZ=${TZ:-Europe/London}
     volumes:
       - sonarr-config:/config
@@ -211,8 +211,8 @@ services:
       gluetun:
         condition: service_healthy
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - TZ=${TZ:-Europe/London}
     volumes:
       - prowlarr-config:/config
@@ -238,8 +238,8 @@ services:
       gluetun:
         condition: service_healthy
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - TZ=${TZ:-Europe/London}
     volumes:
       - radarr-config:/config
@@ -265,8 +265,8 @@ services:
     ports:
       - "32400:32400"  # Local network access
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - TZ=${TZ:-Europe/London}
       - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM}  # Get from https://plex.tv/claim (expires in 4 mins)
@@ -383,8 +383,8 @@ services:
     ports:
       - "5055:5055"  # Local network access
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - TZ=${TZ:-Europe/London}
     networks:
       arr-stack:
@@ -415,8 +415,8 @@ services:
     ports:
       - "6767:6767"  # Local network access
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - TZ=${TZ:-Europe/London}
     networks:
       arr-stack:
