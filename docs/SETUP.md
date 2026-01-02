@@ -673,8 +673,7 @@ docker exec qbittorrent wget -qO- ifconfig.me   # Same - confirms qBit uses VPN
 
 **What's next?**
 - **Stop here** if IP:port access is fine for you
-- **Continue to [Local DNS](#local-dns-lan-domains---optional)** for `.lan` domains
-- **Skip to [External Access](#external-access-optional)** for remote access
+- **Continue to [Local DNS](#local-dns-lan-domains---optional)** for `.lan` domains (and remote access)
 
 ---
 
