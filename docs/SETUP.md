@@ -309,7 +309,7 @@ Edit `.env` with your VPN credentials. Gluetun supports 30+ providers—find you
    PrivateKey = aBcDeFgHiJkLmNoPqRsTuVwXyZ...
    ```
 
-8. Add to `.env`:
+8. Edit `.env`:
    ```bash
    VPN_SERVICE_PROVIDER=surfshark
    VPN_TYPE=wireguard
@@ -346,7 +346,7 @@ Invent a password. Or, to generate a random one:
 ```bash
 openssl rand -base64 24
 ```
-Add to `.env`: `PIHOLE_UI_PASS=your_password`
+Edit `.env`: `PIHOLE_UI_PASS=your_password`
 
 **WireGuard Password Hash** (for remote VPN access — + remote access only):
 
