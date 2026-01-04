@@ -375,6 +375,8 @@ Copy the output to `.env`: `TRAEFIK_DASHBOARD_AUTH=admin:$$apr1$$...`
 
 ### 3.1 Create Docker Network
 
+All services need to talk to each other. This creates a private network with fixed IP addresses so containers can always find each other.
+
 <details>
 <summary><strong>Retrying after a failed deployment?</strong></summary>
 
