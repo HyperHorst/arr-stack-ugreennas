@@ -382,6 +382,10 @@ TRAEFIK_DASHBOARD_AUTH='admin:$2y$05$abc...'
 
 ## GitHub Releases
 
+**⚠️ CRITICAL: Always update CHANGELOG.md when creating a release.**
+
+Update `CHANGELOG.md` BEFORE creating the GitHub release. The changelog is the permanent record; GitHub releases can change but the changelog is in the repo.
+
 When creating release notes:
 - Link to `docs/UPGRADING.md` for upgrade instructions instead of inline steps
 - Keep notes concise - bullet points, not paragraphs

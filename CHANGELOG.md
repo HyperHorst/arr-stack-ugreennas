@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.2] - 2026-01-16
+
+### Fixed
+- **Cloudflared healthcheck**: Was always failing (missing tunnel ID), causing deunhealth to restart cloudflared every ~2.5 minutes. Now uses `cloudflared tunnel info nas-tunnel`
+- **DNS config git tracking**: `pihole/02-local-dns.conf` was tracked despite being in `.gitignore`, causing `git pull` to overwrite user's local DNS config
+- **DNS resolution conflicts**: Stale entries in `pihole.toml` could conflict with dnsmasq config, causing unpredictable `.lan` domain resolution
+
+### Added
+- **Beszel system monitoring**: Lightweight metrics for CPU, RAM, disk, network, and Docker containers (hub + agent with healthchecks)
+- **DNS duplicate detection**: Pre-commit hook (check 9) and standalone script (`./scripts/check-dns-duplicates.sh`) to warn if same `.lan` domain defined in both dnsmasq and pihole.toml
+
+### Changed
+- **Renamed "Optional extras"**: Now "Utilities (optional)" for consistency with `docker-compose.utilities.yml`
+
+### Documentation
+- Beszel setup instructions in SETUP.md
+- Clarified `.lan` DNS guidance: don't define same domain in both dnsmasq config and Pi-hole web UI
+
+---
+
+## [1.5.1] - 2026-01-13
+
+### Added
+- **Auto-restart VPN services**: When Gluetun reconnects to VPN, dependent services (qBittorrent, Sonarr, Radarr, Prowlarr, SABnzbd) now automatically restart via `deunhealth` container
+
+### Fixed
+- VPN reconnection previously left services with stale network attachments, causing "Unable to connect" errors until manual restart
+
+---
+
+## [1.5] - 2026-01-08
+
+### Changed
+- **Removed env var fallbacks**: Compose files no longer have default values for required variables. Missing variables now fail fast with clear errors instead of silently using defaults
+
+### Documentation
+- Clarified which variables are required vs optional in `.env.example`
+
+---
+
 ## [1.4] - 2026-01-02
 
 ### Changed
