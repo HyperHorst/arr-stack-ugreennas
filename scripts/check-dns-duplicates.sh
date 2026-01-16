@@ -13,7 +13,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STACK_DIR="$(dirname "$SCRIPT_DIR")"
 
 DNSMASQ_CONF="$STACK_DIR/pihole/02-local-dns.conf"
-PIHOLE_TOML_CMD="docker exec pihole cat /etc/pihole/pihole.toml 2>/dev/null"
+get_pihole_toml() {
+    docker exec pihole cat /etc/pihole/pihole.toml 2>/dev/null
+}
 
 echo "Checking for duplicate .lan domains..."
 echo
@@ -27,7 +29,7 @@ else
 fi
 
 # Extract domains from pihole.toml hosts array
-pihole_toml=$($PIHOLE_TOML_CMD) || {
+pihole_toml=$(get_pihole_toml) || {
     echo "Warning: Could not read pihole.toml from container"
     exit 0
 }
