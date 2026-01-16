@@ -741,7 +741,7 @@ docker exec pihole sed -i 's/etc_dnsmasq_d = false/etc_dnsmasq_d = true/' /etc/p
 docker compose -f docker-compose.arr-stack.yml restart pihole
 ```
 
-> **⚠️ Important:** Always add `.lan` domains to `02-local-dns.conf` — never use Pi-hole's web UI (Local DNS → DNS Records). The web UI writes to `pihole.toml` which can conflict with dnsmasq config and cause unpredictable DNS resolution.
+> **⚠️ Important:** Stack `.lan` domains are managed in `02-local-dns.conf`. If you add your own domains (e.g., homeassistant.lan), use either the CLI or Pi-hole web UI — but never define the same domain in both places, as they can conflict and cause unpredictable DNS resolution.
 
 **Step 5: Set router DNS**
 

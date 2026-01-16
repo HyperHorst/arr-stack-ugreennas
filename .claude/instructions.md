@@ -195,15 +195,15 @@ If Pi-hole is down and you've lost DNS:
 
 ### Pi-hole Configuration
 
-**⚠️ CRITICAL: Single source of truth for .lan domains**
+**⚠️ CRITICAL: Don't duplicate .lan domains**
 
-All `.lan` domains MUST be defined in `pihole/02-local-dns.conf` (dnsmasq config), NOT in:
-- Pi-hole web UI (Local DNS → DNS Records)
-- `pihole.toml` hosts array
+Stack `.lan` domains are defined in `pihole/02-local-dns.conf` (dnsmasq config). User-specific domains can go in either:
+- `02-local-dns.conf` (CLI)
+- Pi-hole web UI (Local DNS → DNS Records) → writes to `pihole.toml`
 
-**Why?** Pi-hole's `pihole.toml` hosts and dnsmasq configs can conflict. If both define the same domain with different IPs, you get unpredictable resolution. We use dnsmasq only because it's templatable and version-controllable.
+**Never define the same domain in both places.** If both dnsmasq and pihole.toml define a domain with different IPs, resolution is unpredictable.
 
-**Adding .lan domains:**
+**Adding stack .lan domains** (use dnsmasq):
 ```bash
 # On NAS - edit the config file
 nano /volume1/docker/arr-stack/pihole/02-local-dns.conf
@@ -213,13 +213,6 @@ address=/myservice.lan/10.10.0.XX
 
 # Reload (or restart for bind-mount changes)
 docker exec pihole pihole reloaddns
-# OR: docker restart pihole
-```
-
-**Verify pihole.toml hosts is empty** (should stay this way):
-```bash
-docker exec pihole grep 'hosts = ' /etc/pihole/pihole.toml
-# Should show: hosts = []
 ```
 
 **TLDs**: `.local` fails in Docker (mDNS reserved). Use `.lan` for local DNS.
