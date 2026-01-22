@@ -12,8 +12,8 @@ Everything you need to go from zero to streaming. Works on any NAS or Docker hos
 - [Step 3: Start the Stack](#step-3-start-the-stack)
 - [Step 4: Configure Each App](#step-4-configure-each-app)
 - [Step 5: Check It Works](#step-5-check-it-works)
-- [Local DNS (.lan domains)](#local-dns-lan-domains---optional)
-- [External Access](#external-access--optional)
+- [+ local DNS (.lan domains)](#-local-dns-lan-domains--optional)
+- [+ remote access](#-remote-access--optional)
 - [Backup](#backup)
 - [Optional Utilities](#optional-utilities)
 
@@ -741,11 +741,11 @@ Compare the IPs — qBittorrent should show your VPN's IP, not your home IP.
 
 **What's next?**
 - **Stop here** if IP:port access is fine for you
-- **Continue to [Local DNS](#local-dns-lan-domains---optional)** for `.lan` domains (and remote access)
+- **Continue to [+ local DNS](#-local-dns-lan-domains--optional)** for `.lan` domains (and remote access)
 
 ---
 
-## Local DNS (.lan domains) — Optional
+## + local DNS (.lan domains) — Optional
 
 Access services without remembering port numbers: `http://sonarr.lan` instead of `http://NAS_IP:8989`.
 
@@ -827,7 +827,7 @@ See [REFERENCE.md](REFERENCE.md#local-access-lan-domains) for the full list of `
 
 **What's next?**
 - **Stop here** if local access is all you need
-- **Continue to [External Access](#external-access--optional)** for remote access from anywhere
+- **Continue to [+ remote access](#-remote-access--optional)** for remote access from anywhere
 
 **Other docs:** [Upgrading](UPGRADING.md) · [Home Assistant Integration](HOME-ASSISTANT.md) · [Quick Reference](REFERENCE.md)
 
@@ -835,7 +835,7 @@ Issues? [Report on GitHub](https://github.com/Pharkie/arr-stack-ugreennas/issues
 
 ---
 
-## External Access — Optional
+## + remote access — Optional
 
 Access your services from anywhere: `jellyfin.yourdomain.com` instead of only on your home network.
 
@@ -918,7 +918,7 @@ wg:
 
 > **Note:** The `.yml` files are gitignored. Your customized configs won't be overwritten when you `git pull` updates.
 
-### Deploy External Access
+### Deploy + remote access
 
 ```bash
 # Deploy Cloudflare Tunnel
