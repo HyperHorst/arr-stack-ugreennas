@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.4] - 2026-01-22
+
+### Removed
+- **WireGuard VPN server (wg-easy)**: Removed from stack. WireGuard requires port forwarding, which doesn't work for users behind CGNAT (common with many ISPs). Cloudflare Tunnel covers the main use case of remote access to Jellyfin/Jellyseerr.
+
+### Documentation
+- Added Tailscale note for users who need full remote network access (admin UIs, `.lan` domains from outside home)
+- Clarified remote access is for watching/requesting (Jellyfin + Jellyseerr), not full network access
+
+### Note
+WireGuard as VPN *client* protocol (for Gluetun connecting to your VPN provider) is unchanged. This only removes the VPN *server* for incoming connections.
+
+---
+
 ## [1.5.3] - 2026-01-20
 
 ### Added
