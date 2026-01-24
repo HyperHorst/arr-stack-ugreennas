@@ -466,33 +466,74 @@ If transcoding framerate is only ~1x (24-30 fps), hardware acceleration isn't wo
 </details>
 
 <details>
-<summary><strong>Using Kodi with Jellyfin</strong></summary>
+<summary><strong>Kodi for Fire TV (Dolby Vision / TrueHD Atmos passthrough)</strong></summary>
 
-The Jellyfin Android TV app has limited passthrough support for Dolby Vision and TrueHD Atmos. For proper passthrough to your AV receiver, use **Kodi + Jellyfin add-on** instead.
+**Why Kodi instead of the Jellyfin app?**
 
-**Install Jellyfin add-on in Kodi:**
-1. Download repo: `https://kodi.jellyfin.org/repository.jellyfin.kodi.zip`
-2. Kodi → Settings → Add-ons → Install from zip file → select the zip
-3. Install from repository → Jellyfin Kodi Add-ons → Video add-ons → Jellyfin
+The Jellyfin Android TV app uses ExoPlayer which doesn't properly support audio/video passthrough. Even if your Fire TV and AV receiver support Dolby Vision and TrueHD Atmos, the app will transcode instead of passing through - causing high CPU load and degraded quality.
 
-**Fix "Unable to connect" error:**
+Kodi with the Jellyfin add-on properly passes through everything to your receiver.
+
+**Step 1: Install Kodi on Fire TV (sideload via ADB)**
+
+Kodi isn't in the Amazon App Store. Install via ADB from your computer:
+
+```bash
+# Install ADB (Mac)
+brew install android-platform-tools
+
+# Enable on Fire TV: Settings → My Fire TV → Developer Options → ADB debugging → ON
+
+# Connect (replace FIRETV_IP with your Fire TV's IP)
+adb connect FIRETV_IP:5555
+# Accept the prompt on your TV screen
+
+# Download and install Kodi (32-bit for Fire TV)
+curl -L -o /tmp/kodi.apk "https://mirrors.kodi.tv/releases/android/arm/kodi-21.3-Omega-armeabi-v7a.apk"
+adb install /tmp/kodi.apk
+```
+
+**Step 2: Install Jellyfin add-on in Kodi**
+
+First, push the Jellyfin repo to Fire TV:
+```bash
+curl -L -o /tmp/jellyfin-repo.zip "https://kodi.jellyfin.org/repository.jellyfin.kodi.zip"
+adb push /tmp/jellyfin-repo.zip /sdcard/Download/
+```
+
+Then in Kodi on Fire TV:
+1. Settings → Add-ons → Install from zip file
+2. Enable unknown sources if prompted
+3. Select External storage → Download → `jellyfin-repo.zip`
+4. Wait for "Add-on installed" notification
+5. Install from repository → Jellyfin Kodi Add-ons → Video add-ons → Jellyfin → Install
+
+**Step 3: Fix "Unable to connect" error**
 
 Jellyfin in Docker reports its internal Docker IP to clients, which they can't reach. Fix by setting the published server URI:
 
-1. SSH to NAS and edit the network config:
-   ```bash
-   docker exec jellyfin sed -i 's|<PublishedServerUriBySubnet />|<PublishedServerUriBySubnet><string>0.0.0.0/0=http://NAS_IP:8096</string></PublishedServerUriBySubnet>|' /config/config/network.xml
-   ```
-   (Replace `NAS_IP` with your actual NAS IP)
+```bash
+# SSH to NAS and run (replace NAS_IP with your actual NAS IP):
+docker exec jellyfin sed -i 's|<PublishedServerUriBySubnet />|<PublishedServerUriBySubnet><string>0.0.0.0/0=http://NAS_IP:8096</string></PublishedServerUriBySubnet>|' /config/config/network.xml
 
-2. Restart Jellyfin:
-   ```bash
-   docker compose -f docker-compose.arr-stack.yml restart jellyfin
-   ```
+docker compose -f docker-compose.arr-stack.yml restart jellyfin
+```
 
-**Enable passthrough in Kodi:**
-- Settings → System → Audio → Allow passthrough: On
-- Enable: TrueHD, DTS-HD, E-AC3 capable receiver
+**Step 4: Connect and configure**
+
+1. In Kodi, the Jellyfin add-on should auto-discover your server
+2. Select it and login with your Jellyfin credentials
+3. Choose **Add-on** mode when prompted
+
+**Step 5: Enable passthrough in Kodi**
+
+Settings → System → Audio:
+- Allow passthrough: **On**
+- Dolby TrueHD capable receiver: **On**
+- DTS-HD capable receiver: **On**
+- Passthrough output device: your AV receiver
+
+Now 4K Dolby Vision + TrueHD Atmos content will direct play without transcoding.
 
 </details>
 
