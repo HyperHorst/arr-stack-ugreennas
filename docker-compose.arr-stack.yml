@@ -177,7 +177,7 @@ services:
       - TZ=${TZ}
     volumes:
       - sonarr-config:/config
-      - ${MEDIA_ROOT}/tv:/tv
+      - ${MEDIA_ROOT}/videos/serien:/tv
       - ${MEDIA_ROOT}/downloads:/downloads
     labels:
       - deunhealth.restart.on.unhealthy=true
@@ -237,7 +237,7 @@ services:
       - TZ=${TZ}
     volumes:
       - radarr-config:/config
-      - ${MEDIA_ROOT}/movies:/movies
+      - ${MEDIA_ROOT}/videos/filme:/movies
       - ${MEDIA_ROOT}/downloads:/downloads
     labels:
       - deunhealth.restart.on.unhealthy=true
@@ -271,8 +271,8 @@ services:
     volumes:
       - jellyfin-config:/config
       - jellyfin-cache:/cache
-      - ${MEDIA_ROOT}/movies:/media/movies:ro
-      - ${MEDIA_ROOT}/tv:/media/tv:ro
+      - ${MEDIA_ROOT}/videos/filme:/media/movies:ro
+      - ${MEDIA_ROOT}/videos/serien:/media/tv:ro
     networks:
       arr-stack:
         ipv4_address: 172.20.0.4
@@ -371,8 +371,8 @@ services:
         ipv4_address: 172.20.0.9
     volumes:
       - bazarr-config:/config
-      - ${MEDIA_ROOT}/movies:/movies
-      - ${MEDIA_ROOT}/tv:/tv
+      - ${MEDIA_ROOT}/videos/filme:/movies
+      - ${MEDIA_ROOT}/videos/serien:/tv
     restart: always
     logging: *default-logging
     healthcheck:
