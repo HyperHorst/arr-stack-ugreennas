@@ -22,6 +22,7 @@ services:
       - no-new-privileges:true
     networks:
       arr-stack:
+        name: arr-stack
         ipv4_address: 172.20.0.2
       # macvlan gives Traefik its own LAN IP where it can use port 80
       # (NAS owns port 80 on its IP, but Traefik owns it on TRAEFIK_LAN_IP)
